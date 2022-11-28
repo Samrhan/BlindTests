@@ -1,17 +1,9 @@
-import { MemoryRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
 import Register from './register/Register';
 import emit from './utils/event-emiter';
 import LoadingAnimation from './utils/components/LoadingAnimation';
-
-const Hello = () => {
-  return (
-    <div className="absolute inset-0 bg-white text-center h-full flex flex-col justify justify-center">
-      ERB + TAILWIND = ❤
-    </div>
-  );
-};
+import MainPage from './main/MainPage';
 
 const useRegister = () => {
   const [isRegistered, setIsRegistered] = useState<boolean | undefined>(
@@ -39,11 +31,7 @@ export default function App() {
   return (
     <>
       {isRegistered === true ? (
-        <Router>
-          <Routes>
-            <Route path="/" element={<Hello />} />
-          </Routes>
-        </Router>
+        <MainPage />
       ) : isRegistered === false ? (
         <>
           <Register register={handleRegister}></Register>
