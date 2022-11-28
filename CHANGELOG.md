@@ -42,7 +42,8 @@
 
 - Fix sass building bug ([#2540](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2540))
 - Fix CI bug related to E2E tests and network timeouts
-- Move automated dependency PRs to `next` ([#2554](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2554))
+- Move automated dependency PRs
+  to `next` ([#2554](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2554))
 - Bump dependencies to patch semver
 
 # 1.3.0
@@ -58,12 +59,14 @@
 - Lazy load routes with react suspense
 - Drop support for azure-pipelines and use only github actions
 - Bump all deps to latest semver
-- Remove `test-e2e` script from tests (blocked on release of https://github.com/DevExpress/testcafe-browser-provider-electron/pull/65)
+- Remove `test-e2e` script from tests (blocked on release
+  of https://github.com/DevExpress/testcafe-browser-provider-electron/pull/65)
 - Swap `typed-css-modules-webpack-plugin` for `typings-for-css-modules-loader`
 - Use latest version of `eslint-config-erb`
 - Remove unnecessary file extensions from ts exclude
 - Add experimental support for vscode debugging
-- Revert https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365 as default for users, provide as opt in option
+- Revert https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365 as default for users,
+  provide as opt in option
 
 # 1.1.0
 
@@ -72,10 +75,14 @@
 
 # 1.0.0
 
-- Migrate to TypeScript from Flow ([#2363](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2363))
-- Use browserslist for `@babel/preset-env` targets ([#2368](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2368))
-- Use preload script, disable `nodeIntegration` in renderer process for [improved security](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content) ([#2365](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365))
-- Add support for azure pipelines ([#2369](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2369))
+- Migrate to TypeScript from
+  Flow ([#2363](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2363))
+- Use browserslist for `@babel/preset-env`
+  targets ([#2368](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2368))
+- Use preload script, disable `nodeIntegration` in renderer process
+  for [improved security](https://www.electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content) ([#2365](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2365))
+- Add support for azure
+  pipelines ([#2369](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/2369))
 - Disable sourcemaps in production
 
 # 0.18.1 (2019.12.12)
@@ -104,12 +111,14 @@ For full change list, see https://github.com/electron-react-boilerplate/electron
 # 0.17.0 (2018.10.30)
 
 - upgraded to `babel@7` (thanks to @vikr01 🎉🎉🎉)
-- migrated from [two `package.json` structure](https://www.electron.build/tutorials/two-package-structure) (thanks to @HyperSprite!)
+- migrated from [two `package.json` structure](https://www.electron.build/tutorials/two-package-structure) (thanks to
+  @HyperSprite!)
 - initial auto update support (experimental)
 - migrate from greenkeeper to [renovate](https://renovatebot.com)
 - added issue template
 - use `babel-preset-env` to target current electron version
-- add [opencollective](https://opencollective.com/electron-react-boilerplate-594) banner message display in postinstall script (help support ERB 🙏)
+- add [opencollective](https://opencollective.com/electron-react-boilerplate-594) banner message display in postinstall
+  script (help support ERB 🙏)
 - fix failing ci issues
 
 # 0.16.0 (2018.10.3)
@@ -177,7 +186,8 @@ For full change list, see https://github.com/electron-react-boilerplate/electron
 
 #### Breaking
 
-- Changed node dev `__dirname` and `__filename` to node built in fn's (https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/1035)
+- Changed node dev `__dirname` and `__filename` to node built in
+  fn's (https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/1035)
 - Renamed `src/bundle.js` to `src/renderer.prod.js` for consistency
 - Renamed `dll/vendor.js` to `dll/renderer.dev.dll.js` for consistency
 
@@ -187,21 +197,26 @@ For full change list, see https://github.com/electron-react-boilerplate/electron
 
 # 0.11.2 (2017.5.1)
 
-Yay! Another patch release. This release mostly includes refactorings and router bug fixes. Huge thanks to @anthonyraymond!
+Yay! Another patch release. This release mostly includes refactorings and router bug fixes. Huge thanks to
+@anthonyraymond!
 
-⚠️ Windows electron builds are failing because of [this issue](https://github.com/electron/electron/issues/9321). This is not an issue with the boilerplate ⚠️
+⚠️ Windows electron builds are failing because of [this issue](https://github.com/electron/electron/issues/9321). This
+is not an issue with the boilerplate ⚠️
 
 #### Breaking
 
-- **Renamed `./src/main.development.js` => `./src/main.{dev,prod}.js`:** [#963](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/963)
+- **Renamed `./src/main.development.js`
+  => `./src/main.{dev,prod}.js`:** [#963](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/963)
 
 #### Fixes
 
-- **Fixed reloading when not on `/` path:** [#958](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/958) [#949](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/949)
+- **Fixed reloading when not on `/`
+  path:** [#958](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/958) [#949](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/949)
 
 #### Additions
 
-- **Added support for stylefmt:** [#960](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/960)
+- **Added support for
+  stylefmt:** [#960](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/960)
 
 # 0.11.1 (2017.4.23)
 
@@ -215,11 +230,13 @@ DEBUG_PROD=true npm run package
 
 #### Additions
 
-- **Added support for debugging production build:** [#fab245a](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/941/commits/fab245a077d02a09630f74270806c0c534a4ff95)
+- **Added support for debugging production
+  build:** [#fab245a](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/941/commits/fab245a077d02a09630f74270806c0c534a4ff95)
 
 #### Bug Fixes
 
-- **Fixed bug related to importing native dependencies:** [#933](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/933)
+- **Fixed bug related to importing native
+  dependencies:** [#933](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/933)
 
 #### Improvements
 
@@ -227,7 +244,8 @@ DEBUG_PROD=true npm run package
 
 # 0.11.0 (2017.4.19)
 
-Here's the most notable changes since `v0.10.0`. Its been about a year since a release has been pushed. Expect a new release to be published every 3-4 weeks.
+Here's the most notable changes since `v0.10.0`. Its been about a year since a release has been pushed. Expect a new
+release to be published every 3-4 weeks.
 
 #### Breaking Changes
 
@@ -246,38 +264,53 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 - **Added support for Yarn:** [#451](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/451)
 - **Added support for Flow:** [#425](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/425)
-- **Added support for stylelint:** [#911](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/911)
-- **Added support for electron-builder:** [#876](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/876)
-- **Added optional support for SASS:** [#880](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/880)
-- **Added support for eslint-plugin-flowtype:** [#911](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/911)
-- **Added support for appveyor:** [#280](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/280)
-- **Added support for webpack dlls:** [#860](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/860)
-- **Route based code splitting:** [#884](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/884)
-- **Added support for Webpack Bundle Analyzer:** [#922](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/922)
+- **Added support for
+  stylelint:** [#911](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/911)
+- **Added support for
+  electron-builder:** [#876](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/876)
+- **Added optional support for
+  SASS:** [#880](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/880)
+- **Added support for
+  eslint-plugin-flowtype:** [#911](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/911)
+- **Added support for
+  appveyor:** [#280](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/280)
+- **Added support for webpack
+  dlls:** [#860](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/860)
+- **Route based code
+  splitting:** [#884](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/884)
+- **Added support for Webpack Bundle
+  Analyzer:** [#922](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/922)
 
 #### Improvements
 
 - **Parallelize renderer and main build processes when running `npm run build`**
 - **Dynamically generate electron app menu**
-- **Improved vscode integration:** [#856](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/856)
+- **Improved vscode
+  integration:** [#856](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/856)
 
 #### Bug Fixes
 
-- **Fixed hot module replacement race condition bug:** [#917](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/917) [#920](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/920)
+- **Fixed hot module replacement race condition
+  bug:** [#917](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/917) [#920](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/920)
 
 # 0.10.0 (2016.4.18)
 
 #### Improvements
 
-- **Use Babel in main process with Webpack build:** [#201](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/201)
-- **Change targets to built-in support by webpack:** [#197](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/197)
-- **use es2015 syntax for webpack configs:** [#195](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/195)
-- **Open application when webcontent is loaded:** [#192](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/192)
+- **Use Babel in main process with Webpack
+  build:** [#201](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/201)
+- **Change targets to built-in support by
+  webpack:** [#197](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/197)
+- **use es2015 syntax for webpack
+  configs:** [#195](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/195)
+- **Open application when webcontent is
+  loaded:** [#192](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/192)
 - **Upgraded dependencies**
 
 #### Bug fixed
 
-- **Fix `npm list electron-prebuilt` in package.js:** [#188](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/188)
+- **Fix `npm list electron-prebuilt` in
+  package.js:** [#188](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/188)
 
 # 0.9.0 (2016.3.23)
 
@@ -286,20 +319,23 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 - **Added [redux-logger](https://github.com/fcomb/redux-logger)**
 - **Upgraded [react-router-redux](https://github.com/reactjs/react-router-redux) to v4**
 - **Upgraded dependencies**
-- **Added `npm run dev` command:** [#162](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/162)
+- **Added `npm run dev`
+  command:** [#162](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/162)
 - **electron to v0.37.2**
 
 #### Breaking Changes
 
 - **css module as default:** [#154](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/154).
-- **set default NODE_ENV to production:** [#140](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/140)
+- **set default NODE_ENV to
+  production:** [#140](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/140)
 
 # 0.8.0 (2016.2.17)
 
 #### Bug fixed
 
 - **Fix lint errors**
-- **Fix Webpack publicPath for production builds**: [#119](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/119).
+- **Fix Webpack publicPath for production
+  builds**: [#119](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/119).
 - **package script now chooses correct OS icon extension**
 
 #### Improvements
@@ -314,8 +350,11 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Bug fixed
 
-- **Fixed npm script on windows 10:** [#103](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/103).
-- **history and react-router version bump**: [#109](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/109), [#110](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/110).
+- **Fixed npm script on windows
+  10:** [#103](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/103).
+- **history and react-router version
+  bump**: [#109](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/109)
+  , [#110](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/110).
 
 #### Improvements
 
@@ -325,11 +364,15 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Bug fixed
 
-- **Fixed process.env.NODE_ENV variable in webpack:** [#74](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/74).
-- **add missing object-assign**: [#76](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/76).
+- **Fixed process.env.NODE_ENV variable in
+  webpack:** [#74](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/74).
+- **add missing object-assign**: [#76](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/76)
+  .
 - **packaging in npm@3:** [#77](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/77).
-- **compatibility in windows:** [#100](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/100).
-- **disable chrome debugger in production env:** [#102](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/102).
+- **compatibility in
+  windows:** [#100](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/100).
+- **disable chrome debugger in production
+  env:** [#102](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/102).
 
 #### Improvements
 
@@ -360,13 +403,15 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Improvements
 
-- **Initialize ExtractTextPlugin once:** [#64](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/64).
+- **Initialize ExtractTextPlugin
+  once:** [#64](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/64).
 
 # 0.6.2 (2015.10.18)
 
 #### Bug fixed
 
-- **Babel plugins production env not be set properly:** [#57](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/57).
+- **Babel plugins production env not be set
+  properly:** [#57](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/57).
 
 # 0.6.1 (2015.10.17)
 
@@ -384,7 +429,8 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Improvements
 
-- **Run tests with babel-register:** [#29](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/29).
+- **Run tests with
+  babel-register:** [#29](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/29).
 
 # 0.5.1 (2015.10.12)
 
@@ -396,7 +442,8 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Improvements
 
-- **Simplify webpack config** see [#50](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/50).
+- **Simplify webpack config**
+  see [#50](https://github.com/electron-react-boilerplate/electron-react-boilerplate/pull/50).
 
 #### Breaking Changes
 
@@ -442,7 +489,8 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Improvements
 
-- **electron-renderer as target:** via [webpack-target-electron-renderer](https://github.com/chentsulin/webpack-target-electron-renderer)
+- **electron-renderer as target:**
+  via [webpack-target-electron-renderer](https://github.com/chentsulin/webpack-target-electron-renderer)
 
 # 0.2.9 (2015.8.18)
 
@@ -485,7 +533,8 @@ Here's the most notable changes since `v0.10.0`. Its been about a year since a r
 
 #### Bug fixed
 
-- **Eslint:** typo, [#17](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/17) and improve `.eslintrc`
+- **Eslint:** typo, [#17](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/17) and
+  improve `.eslintrc`
 
 # 0.2.3 (2015.6.3)
 

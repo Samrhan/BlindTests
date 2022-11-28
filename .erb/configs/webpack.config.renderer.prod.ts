@@ -32,8 +32,8 @@ const configuration: webpack.Configuration = {
     publicPath: './',
     filename: 'renderer.js',
     library: {
-      type: 'umd',
-    },
+      type: 'umd'
+    }
   },
 
   module: {
@@ -47,58 +47,51 @@ const configuration: webpack.Configuration = {
             options: {
               modules: true,
               sourceMap: true,
-              importLoaders: 1,
-            },
+              importLoaders: 1
+            }
           },
-          'sass-loader',
+          'sass-loader'
         ],
-        include: /\.module\.s?(c|a)ss$/,
+        include: /\.module\.s?(c|a)ss$/
       },
       {
         test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        exclude: /\.module\.s?(c|a)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('tailwindcss'), require('autoprefixer')]
+              }
+            }
+          }
+        ],
+        exclude: /\.module\.s?(c|a)ss$/
       },
       // Fonts
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource'
       },
       // Images
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-      // SVG
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              prettier: false,
-              svgo: false,
-              svgoConfig: {
-                plugins: [{ removeViewBox: false }],
-              },
-              titleProp: true,
-              ref: true,
-            },
-          },
-          'file-loader',
-        ],
-      },
-    ],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
+      }
+    ]
   },
 
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        parallel: true,
+        parallel: true
       }),
-      new CssMinimizerPlugin(),
-    ],
+      new CssMinimizerPlugin()
+    ]
   },
 
   plugins: [
@@ -113,16 +106,16 @@ const configuration: webpack.Configuration = {
      */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
-      DEBUG_PROD: false,
+      DEBUG_PROD: false
     }),
 
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'style.css'
     }),
 
     new BundleAnalyzerPlugin({
       analyzerMode: process.env.ANALYZE === 'true' ? 'server' : 'disabled',
-      analyzerPort: 8889,
+      analyzerPort: 8889
     }),
 
     new HtmlWebpackPlugin({
@@ -131,16 +124,16 @@ const configuration: webpack.Configuration = {
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
-        removeComments: true,
+        removeComments: true
       },
       isBrowser: false,
-      isDevelopment: process.env.NODE_ENV !== 'production',
+      isDevelopment: process.env.NODE_ENV !== 'production'
     }),
 
     new webpack.DefinePlugin({
-      'process.type': '"renderer"',
-    }),
-  ],
+      'process.type': '"renderer"'
+    })
+  ]
 };
 
 export default merge(baseConfig, configuration);
