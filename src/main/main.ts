@@ -1,5 +1,3 @@
-/* eslint global-require: off, no-console: off, promise/always-return: off */
-
 /**
  * This module executes inside of electron's main process. You can start
  * electron renderer process from here and communicate with the other processes
@@ -14,7 +12,11 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import * as storage from 'electron-json-storage';
+import { EnvEnum } from './enums/env.enum';
+import Register from './events/register.event';
+import CheckConfigEvent from './events/check-config.event';
+import RegisterEvents from './events';
+RegisterEvents([CheckConfigEvent, Register]);
 
 class AppUpdater {
   constructor() {
@@ -26,33 +28,17 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('check-register', async (event, arg) => {
-  storage.has('username', function(error, hasKey) {
-    if (error) throw error;
-    event.reply('check-register-reply', hasKey);
-  });
-});
-
-ipcMain.on('register', async (event, arg) => {
-  console.log(arg[0]);
-  storage.set('username', arg[0], function(error) {
-    if (error) throw error;
-    event.reply('register-reply', 'ok');
-  });
-});
-
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === EnvEnum.PROD) {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
 }
 
 const isDebug =
-  process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
+  process.env.NODE_ENV === EnvEnum.DEV || process.env.DEBUG_PROD === 'true';
 
 if (isDebug) {
   require('electron-debug')();
 }
-
 
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer');
@@ -88,16 +74,9 @@ const createWindow = async () => {
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../.erb/dll/preload.js')
-    }
+        : path.join(__dirname, '../../.erb/dll/preload.js'),
+    },
   });
-
-  // Clean store on dev
-  if (process.env.NODE_ENV === 'development') {
-    storage.clear(function(error) {
-      if (error) throw error;
-    });
-  }
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
