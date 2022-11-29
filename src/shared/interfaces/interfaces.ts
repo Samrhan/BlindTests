@@ -11,3 +11,5 @@ export interface Song {
   title: string;
   artist: string;
 }
+
+export type PlaylistBody = Pick<Playlist, 'title' | 'folderPath' | 'songs'>;

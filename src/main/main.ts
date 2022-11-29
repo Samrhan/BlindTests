@@ -7,16 +7,20 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { EnvEnum } from './enums/env.enum';
-import Register from './events/register.event';
+import RegisterEvent from './events/register.event';
 import CheckConfigEvent from './events/check-config.event';
 import RegisterEvents from './events';
-RegisterEvents([CheckConfigEvent, Register]);
+import CreatePlaylistEvent from './events/create-playlist.event';
+import GetPlaylistEvent from './events/get-playlist.event';
+import UpdatePlaylistEvent from './events/update-playlist.event';
+
+RegisterEvents([CheckConfigEvent, RegisterEvent, CreatePlaylistEvent, GetPlaylistEvent, UpdatePlaylistEvent]);
 
 class AppUpdater {
   constructor() {
@@ -74,8 +78,8 @@ const createWindow = async () => {
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
-        : path.join(__dirname, '../../.erb/dll/preload.js'),
-    },
+        : path.join(__dirname, '../../.erb/dll/preload.js')
+    }
   });
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));

@@ -1,4 +1,6 @@
 import * as storage from 'electron-json-storage';
+import { Playlist } from '../shared/interfaces/interfaces';
+import { EventProps } from './events';
 
 export default class Repository {
   private static instance: Repository;
@@ -63,5 +65,22 @@ export default class Repository {
   static async getConfigKey(key: string): Promise<string> {
     const config = await Repository.getConfig();
     return config[key];
+  }
+
+  static async createPlaylist(playlist: Playlist) {
+    const playlists = await Repository.get('playlists') as Record<string, Playlist>;
+    playlists[playlist.id] = playlist;
+    await Repository.set('playlists', playlists);
+  }
+
+  static async getPlaylists(): Promise<Playlist[]> {
+    const playlists = await Repository.get('playlists');
+    return playlists ? (Object.values(playlists) as Playlist[]) : [];
+  }
+
+  static async savePlaylist(playlist: Playlist) {
+    const playlists = await Repository.get('playlists') as Record<string, Playlist>;
+    playlists[playlist.id] = playlist;
+    await Repository.set('playlists', playlists);
   }
 }

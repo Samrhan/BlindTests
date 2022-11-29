@@ -1,4 +1,5 @@
-import { Playlist } from '../../interfaces/interfaces';
+import { Playlist } from '../../../shared/interfaces/interfaces';
+import { NavLink } from 'react-router-dom';
 
 interface PlaylistsProps {
   playlists: Playlist[];
@@ -8,12 +9,12 @@ export default function Playlists({ playlists }: PlaylistsProps) {
   const playlistDisplay = playlists.map((playlist) => {
     return (
       <tr
-        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        className="bg-white border-b bg-gray-800 border-gray-700"
         key={playlist.id}
       >
         <th
           scope="row"
-          className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          className="py-4 px-6 font-medium whitespace-nowrap text-white"
         >
           {playlist.title}
         </th>
@@ -22,18 +23,18 @@ export default function Playlists({ playlists }: PlaylistsProps) {
         <td className="py-4 px-6 text-right">
           <a
             href="#"
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            className="font-medium text-blue-500 hover:underline"
           >
             Lancer
           </a>
         </td>
         <td className="py-4 px-6 text-right">
-          <a
-            href="#"
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          <NavLink
+            to={`/playlists/${playlist.id}`}
+            className="font-medium text-blue-500 hover:underline"
           >
             Modifier
-          </a>
+          </NavLink>
         </td>
       </tr>
     );
@@ -41,8 +42,8 @@ export default function Playlists({ playlists }: PlaylistsProps) {
   return (
     <div className="w-full h-full bg-gray-800">
       <div className="overflow-x-auto relative">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-400">
+          <thead className="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
               <th scope="col" className="py-3 px-6">
                 Nom
