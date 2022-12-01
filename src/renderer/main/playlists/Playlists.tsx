@@ -21,12 +21,12 @@ export default function Playlists({ playlists }: PlaylistsProps) {
         <td className="py-4 px-6">{playlist.songs.length}</td>
         <td className="py-4 px-6">{playlist.folderPath}</td>
         <td className="py-4 px-6 text-right">
-          <a
-            href="#"
+          <NavLink
+            to={`/playlists/${playlist.id}/play`}
             className="font-medium text-blue-500 hover:underline"
           >
             Lancer
-          </a>
+          </NavLink>
         </td>
         <td className="py-4 px-6 text-right">
           <NavLink

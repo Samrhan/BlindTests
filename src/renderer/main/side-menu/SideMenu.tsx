@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 export default function SideMenu() {
   return (
-    <div className="sidebar lg:left-0 p-2 min-w-[300px] overflow-y-hidden text-center bg-gray-900">
+    <div className="sidebar lg:left-0 p-2 min-w-[20vw] overflow-y-hidden text-center bg-gray-900">
       <div className="text-gray-100 text-xl">
         <div className="p-2.5 mt-1 flex items-center">
           <i className="bi bi-music-note px-2 py-1 rounded-md bg-blue-600"></i>
