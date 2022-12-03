@@ -19,8 +19,10 @@ import RegisterEvents from './events';
 import CreatePlaylistEvent from './events/create-playlist.event';
 import GetPlaylistEvent from './events/get-playlist.event';
 import UpdatePlaylistEvent from './events/update-playlist.event';
+import StartPlaylist from './events/start-playlist.event';
 
-RegisterEvents([CheckConfigEvent, RegisterEvent, CreatePlaylistEvent, GetPlaylistEvent, UpdatePlaylistEvent]);
+RegisterEvents([CheckConfigEvent, RegisterEvent, CreatePlaylistEvent, GetPlaylistEvent, UpdatePlaylistEvent, StartPlaylist]);
+
 
 class AppUpdater {
   constructor() {

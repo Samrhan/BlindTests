@@ -83,4 +83,9 @@ export default class Repository {
     playlists[playlist.id] = playlist;
     await Repository.set('playlists', playlists);
   }
+
+  static async getPlaylist(playlistId: string) {
+    const playlists = await Repository.get('playlists') as Record<string, Playlist>;
+    return playlists[playlistId];
+  }
 }

@@ -89,6 +89,9 @@
     }
   },
   "dependencies": {
+    "@types/difflib": "^0.2.1",
+    "collect.js": "^4.34.3",
+    "difflib": "^0.2.4",
     "electron-debug": "^3.2.0",
     "electron-json-storage": "^4.6.0",
     "electron-log": "^4.4.8",
@@ -96,6 +99,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",
+    "reflect-metadata": "^0.1.13",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
