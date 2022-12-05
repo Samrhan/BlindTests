@@ -24,7 +24,12 @@ const usePlaylistStorage = () => {
   return { playlists, setPlaylists };
 };
 
-export default function MainPage() {
+interface MainPageProps {
+  username: string
+}
+
+
+export default function MainPage({username}: MainPageProps) {
   const { playlists, setPlaylists } = usePlaylistStorage();
 
   const handleNewPlaylist = (playlist: PlaylistBody) => {
@@ -65,7 +70,7 @@ export default function MainPage() {
             <Route path="/" element={<Navigate to="/playlists" />} />
             <Route
               path="/playlists"
-              element={<Playlists playlists={playlists} />}
+              element={<Playlists playlists={playlists}  />}
             ></Route>
             <Route
               path="/playlists/:id"
@@ -78,7 +83,7 @@ export default function MainPage() {
             ></Route>
             <Route
               path="/playlists/:id/play"
-              element={<Play findPlaylist={handleFindPlaylist} />}
+              element={<Play findPlaylist={handleFindPlaylist} username={username} />}
             ></Route>
             <Route
               path="/playlists/:id"

@@ -13,6 +13,7 @@
   ],
   "license": "MIT",
   "main": "./src/main/main.ts",
+  "type": "commonjs",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
@@ -89,17 +90,20 @@
     }
   },
   "dependencies": {
-    "@types/difflib": "^0.2.1",
+    "axios": "^1.2.0",
     "collect.js": "^4.34.3",
     "difflib": "^0.2.4",
     "electron-debug": "^3.2.0",
     "electron-json-storage": "^4.6.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^5.2.3",
+    "esm": "^3.2.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",
     "reflect-metadata": "^0.1.13",
+    "spotify-web-api-js": "^1.5.2",
+    "tmi.js": "^1.8.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -108,6 +112,8 @@
     "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
+    "@types/axios": "^0.14.0",
+    "@types/difflib": "^0.2.1",
     "@types/electron-json-storage": "^4.5.0",
     "@types/jest": "^28.1.7",
     "@types/node": "18.7.6",
@@ -115,6 +121,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-test-renderer": "^18.0.0",
     "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/tmi.js": "^1.8.2",
     "@types/uuid": "^8.3.4",
     "@types/webpack-bundle-analyzer": "^4.4.2",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
@@ -178,8 +185,8 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "Blindtest Player",
+    "appId": "fr.sbader.BlindtestPlayer",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -237,12 +244,9 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "BlindTests-Player",
+      "repo": "BlindTests-Player"
     }
-  },
-  "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
   "devEngines": {
     "node": ">=14.x",

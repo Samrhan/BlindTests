@@ -1,23 +1,17 @@
-import { Event, EventProps } from '../events';
-import { Playlist } from '../../shared/interfaces/interfaces';
-import Repository from '../repository';
+import { Event } from '../events';
 import { Controller, Inject } from '../dependency-inversion';
-import PlayService from '../services/play.service';
-
-interface StartPlaylistProps extends EventProps {
-  playlistId: string;
-}
+import PlaylistService from '../services/playlist.service';
 
 @Controller()
 export default class StartPlaylist extends Event {
-  private playService: PlayService;
+  private playlistService: PlaylistService;
 
-  constructor(@Inject() playService: PlayService) {
+  constructor(@Inject() playlistService: PlaylistService) {
     super('start-playlist');
-    this.playService = playService;
+    this.playlistService = playlistService;
   }
 
-  async handler({ playlistId }: StartPlaylistProps): Promise<void> {
-    this.playService.startPlaylist(playlistId)
+  async handler(): Promise<void> {
+    await this.playlistService.listen();
   }
 }

@@ -5,7 +5,6 @@ export class Container {
   static register(key: string, instance: any) {
     if (!Container.registry.has(key)) {
       Container.registry.set(key, instance);
-      console.log(`Added ${key} to the registry.`);
     }
   }
 

@@ -9,9 +9,11 @@ const useRegister = () => {
   const [isRegistered, setIsRegistered] = useState<boolean | undefined>(
     undefined
   );
+  const [username, setUsername] = useState<string | undefined>(undefined);
   useEffect(() => {
-    emit<boolean>('check-register').then((isRegistered: boolean) => {
-      setIsRegistered(isRegistered);
+    emit<string>('check-register').then((isRegistered: string) => {
+      setIsRegistered(!!isRegistered);
+      setUsername(isRegistered);
     });
   }, [setIsRegistered]);
   const register = (value: string) => {
@@ -19,19 +21,19 @@ const useRegister = () => {
       setIsRegistered(true);
     });
   };
-  return { isRegistered, register };
+  return { isRegistered, register, username };
 };
 
 export default function App() {
-  const { isRegistered, register } = useRegister();
+  const { isRegistered, register, username } = useRegister();
   const handleRegister = (value: string) => {
     register(value);
   };
 
   return (
     <>
-      {isRegistered === true ? (
-        <MainPage />
+      {isRegistered === true && username ? (
+        <MainPage username={username}  />
       ) : isRegistered === false ? (
         <>
           <Register register={handleRegister}></Register>

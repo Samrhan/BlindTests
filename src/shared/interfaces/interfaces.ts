@@ -10,6 +10,7 @@ export interface Song {
   path: string;
   title: string;
   artist: string;
+  duration?: number;
 }
 
 export interface Match {
@@ -33,3 +34,5 @@ export interface Message {
 }
 
 export type PlaylistBody = Pick<Playlist, 'title' | 'folderPath' | 'songs'>;
+
+export type PartialSong = Pick<Song, 'title' | 'artist'>

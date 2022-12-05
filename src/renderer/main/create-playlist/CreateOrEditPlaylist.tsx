@@ -1,8 +1,10 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { Playlist, PlaylistBody, Song } from '../../../shared/interfaces/interfaces';
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import { PartialSong, Playlist, PlaylistBody, Song } from '../../../shared/interfaces/interfaces';
 import SongRow from './song-row/SongRow';
 import { v4 as uuidV4 } from 'uuid';
 import { useParams } from 'react-router-dom';
+import emit from '../../utils/event-emiter';
+import YoutubeModal from './youtube-modal/YoutubeModal';
 
 interface CreateOrEditPlaylistProps {
   playlist?: Playlist;
@@ -17,11 +19,20 @@ export default function CreateOrEditPlaylist({
                                                findPlaylist,
                                                editPlaylist
                                              }: CreateOrEditPlaylistProps) {
+  const [showModal, setShowModal] = useState(false);
   const { id } = useParams();
   const [title, setTitle] = useState<string>(playlist?.title || '');
   const [folderPath, setFolderPath] = useState<string>(
     playlist?.folderPath || ''
   );
+
+  const handleShowModal = useCallback(() => {
+    setShowModal(true);
+  }, []);
+
+  const handleHideModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
 
   const [songs, setSongs] = useState<Song[]>(playlist?.songs || []);
   const addDirectoryAttribute = (node: HTMLInputElement) => {
@@ -32,17 +43,17 @@ export default function CreateOrEditPlaylist({
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
-  const handleFolderPathChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFolderPathChange = useCallback(async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const path = event.target.files[0].path.split(/([\\/])/gim);
       path.pop();
       setFolderPath(path.join(''));
       for (let i = 0; i < event.target.files.length; i++) {
-        addSong(event.target.files[i].path);
+        await addSong(event.target.files[i].path);
       }
     }
-  };
-  const addSong = (path: string) => {
+  }, []);
+  const addSong = async (path: string) => {
     path = path.replace(/\\/g, '/');
 
     if (songs.find((song) => song.path === path)) {
@@ -172,8 +183,8 @@ export default function CreateOrEditPlaylist({
       <div className='my-4 bg-gray-600 h-[1px] mx-20'></div>
       <div>
         <div className='px-10 w-full flex'>
-          <button
-            className='bg-red-800 mr-2 text-white p-2.5 mb-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-900 text-white'>
+          <button onClick={handleShowModal}
+                  className='bg-red-800 mr-2 text-white p-2.5 mb-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-900 text-white'>
             Ajouter depuis YouTube
           </button>
           <button onClick={handleSavePlaylist}
@@ -206,6 +217,9 @@ export default function CreateOrEditPlaylist({
           </table>
         </div>
       </div>
+      {showModal && (
+        <YoutubeModal handleHideModal={handleHideModal} />
+      )}
     </div>
   );
 }

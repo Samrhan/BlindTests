@@ -20,9 +20,11 @@ import CreatePlaylistEvent from './events/create-playlist.event';
 import GetPlaylistEvent from './events/get-playlist.event';
 import UpdatePlaylistEvent from './events/update-playlist.event';
 import StartPlaylist from './events/start-playlist.event';
+import GetFile from './events/get-file.event';
+import PlaySong from './events/play-song.event';
+import Confirm from './events/confirm.event';
 
-RegisterEvents([CheckConfigEvent, RegisterEvent, CreatePlaylistEvent, GetPlaylistEvent, UpdatePlaylistEvent, StartPlaylist]);
-
+RegisterEvents([CheckConfigEvent, RegisterEvent, CreatePlaylistEvent, GetPlaylistEvent, UpdatePlaylistEvent, StartPlaylist, GetFile, PlaySong, Confirm]);
 
 class AppUpdater {
   constructor() {
@@ -109,6 +111,8 @@ const createWindow = async () => {
     shell.openExternal(edata.url);
     return { action: 'deny' };
   });
+
+  (global as any).webContents = mainWindow.webContents;
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line

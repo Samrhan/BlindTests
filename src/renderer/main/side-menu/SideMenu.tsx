@@ -14,7 +14,7 @@ export default function SideMenu() {
       </div>
       <NavLink
         className={({ isActive }) =>
-          'p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ' +
+          'p-2.5 mt-3 flex text-left items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ' +
           (isActive ? 'bg-blue-600' : '')
         }
         to="/playlists"
@@ -26,7 +26,7 @@ export default function SideMenu() {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          'p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ' +
+          'p-2.5 mt-3 flex text-left items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white ' +
           (isActive ? 'bg-blue-600' : '')
         }
         to="/create-playlist"
