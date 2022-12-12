@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Register from './register/Register';
 import emit from './utils/event-emiter';
 import LoadingAnimation from './utils/components/LoadingAnimation';
@@ -15,25 +15,31 @@ const useRegister = () => {
       setIsRegistered(!!isRegistered);
       setUsername(isRegistered);
     });
-  }, [setIsRegistered]);
-  const register = (value: string) => {
+  }, []);
+  const register = useCallback((value: string) => {
     emit('register', { username: value }).then(() => {
       setIsRegistered(true);
+      setUsername(value);
     });
-  };
-  return { isRegistered, register, username };
+  }, [username]);
+
+  const logout = useCallback(() => {
+    setIsRegistered(false);
+    setUsername(undefined);
+  }, []);
+
+  return { isRegistered, register, username, logout };
 };
 
 export default function App() {
-  const { isRegistered, register, username } = useRegister();
+  const { isRegistered, register, username, logout } = useRegister();
   const handleRegister = (value: string) => {
     register(value);
   };
-
   return (
     <>
       {isRegistered === true && username ? (
-        <MainPage username={username}  />
+        <MainPage username={username} logout={logout} />
       ) : isRegistered === false ? (
         <>
           <Register register={handleRegister}></Register>

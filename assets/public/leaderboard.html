@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Leaderboard</title>
+    <style>
+      @font-face {
+        font-family: "Claire Hand";
+        src: url("assets/clairehandregular-webfont.ttf") format('truetype');
+      }
+
+      body {
+        font-family: "Claire Hand", sans-serif;
+        font-size: 30px;
+      }
+
+      #lastMessages {
+        position: absolute;
+        left: 93px;
+        top: 171px;
+      }
+
+      #leaderBoard {
+        position: absolute;
+        left: 93px;
+        top: 528px;
+      }
+
+      div span {
+        color: white;
+      }
+
+      td:first-child {
+        color: white;
+      }
+
+      td:last-child {
+        color: #9de5fd;
+        text-transform: uppercase;
+      }
+
+      table {
+        margin-top: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='lastMessages'>
+        <span>
+          Sur le dernier titre
+        </span>
+        <table id='lastMessagesTable'>
+        </table>
+      </div>
+
+      <div id='leaderBoard'>
+        <span>
+          Classement général
+        </span>
+        <table id='leaderBoardTable'>
+        </table>
+      </div>
+    </div>
+    <img src='assets/scores.png' alt='score' />
+    <script crossorigin='anonymous'
+            integrity='sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=='
+            referrerpolicy='no-referrer'
+            src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js'></script>
+    <script>
+      let lastMessages = [];
+      const socket = io('/');
+      socket.on('message', (message) => {
+        if (lastMessages.find((m) => m.author === message.author) || lastMessages.length >= 5) {
+          return;
+        }
+        lastMessages.push(message);
+        const lastMessagesTable = document.getElementById('lastMessagesTable');
+        const line = document.createElement('tr');
+        line.innerHTML = `<td>${lastMessages.length} -&nbsp;</td>
+                          <td>${message.author}</td>`;
+        lastMessagesTable.appendChild(line);
+      });
+
+      socket.on('next', () => {
+        lastMessages = [];
+        const lastMessagesTable = document.getElementById('lastMessagesTable');
+        lastMessagesTable.innerHTML = '';
+      });
+
+      socket.on('leaderboard', (leaderboard) => {
+        const table = [];
+        for (const key in leaderboard) {
+          table.push({
+            score: leaderboard[key],
+            username: key
+          });
+        }
+        const sorted = table.sort(function(a, b) {
+          return (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0);
+        });
+
+        const leaderBoardTable = document.getElementById('leaderBoardTable');
+        const tmpTable = document.createElement('table');
+        for (let i = 0; table[i] && i < 10; i++) {
+          const line = document.createElement('tr');
+          line.innerHTML = `<td>${i + 1} -&nbsp;</td>
+                            <td>${sorted[i].username}</td>`;
+          tmpTable.appendChild(line);
+        }
+        leaderBoardTable.innerHTML = tmpTable.innerHTML;
+      });
+    </script>
+
+  </body>
+</html>

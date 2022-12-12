@@ -25,11 +25,12 @@ const usePlaylistStorage = () => {
 };
 
 interface MainPageProps {
-  username: string
+  username: string,
+  logout: () => void
 }
 
 
-export default function MainPage({username}: MainPageProps) {
+export default function MainPage({username, logout}: MainPageProps) {
   const { playlists, setPlaylists } = usePlaylistStorage();
 
   const handleNewPlaylist = (playlist: PlaylistBody) => {
@@ -65,7 +66,7 @@ export default function MainPage({username}: MainPageProps) {
     <>
       <div className="flex flex-row h-full w-full">
         <Router>
-          <SideMenu />
+          <SideMenu logout={logout} />
           <Routes>
             <Route path="/" element={<Navigate to="/playlists" />} />
             <Route

@@ -66,6 +66,8 @@ const createWindow = async () => {
     await installExtensions();
   }
 
+  (global as any).isPackaged = app.isPackaged;
+
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
